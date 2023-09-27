@@ -6,13 +6,15 @@ import { CreateTrackingDto } from './dto/create-tracking.dto';
 export class TrackingController {
   constructor(private readonly trackingService: TrackingService) {}
 
-  @Post("/:envio-id/tracking")
-  create(@Param('envio-id') envioId: string, @Body() createTrackingDto: CreateTrackingDto) {
+  @Post("/:id/tracking")
+  create(@Param('id') envioId: string, @Body() createTrackingDto: CreateTrackingDto) {
+    console.log("sedfwefwefwef");
+    
     return this.trackingService.create(envioId, createTrackingDto);
   }
 
-  @Get("/:envio-id/tracking")
-  findAll(@Param('envio-id') envioId: string) {
+  @Get("/:id/tracking")
+  findAll(@Param('id') envioId: string) {
     return this.trackingService.findByEnvioId(envioId);
   }
 }

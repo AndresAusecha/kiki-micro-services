@@ -12,7 +12,7 @@ export class Tracking {
   @PrimaryGeneratedColumn()
   id_tracking: number;
 
-  @Column({ type: 'int' })
+  @Column({ type: 'int', nullable: false })
   id_envio: string;
 
   @Column({ type: 'varchar', length: 50 })

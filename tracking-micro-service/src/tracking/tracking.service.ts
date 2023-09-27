@@ -1,26 +1,26 @@
 import { Injectable } from '@nestjs/common';
 import { CreateTrackingDto } from './dto/create-tracking.dto';
-import { UpdateTrackingDto } from './dto/update-tracking.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Tracking } from './entities/tracking.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class TrackingService {
-  create(createTrackingDto: CreateTrackingDto) {
-    return 'This action adds a new tracking';
+  constructor(
+    @InjectRepository(Tracking) private readonly trackingRepository: Repository<Tracking>,
+  ) {}
+
+  create(envioId: string, createTrackingDto: CreateTrackingDto) {
+    const tracking = new Tracking()
+    tracking.estado = createTrackingDto.estado
+    tracking.fecha = new Date(createTrackingDto.fecha)
+    tracking.id_envio = envioId
+    tracking.ubicacion = createTrackingDto.ubicacion
+    
+    return this.trackingRepository.save(tracking)
   }
 
-  findAll() {
-    return `This action returns all tracking`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} tracking`;
-  }
-
-  update(id: number, updateTrackingDto: UpdateTrackingDto) {
-    return `This action updates a #${id} tracking`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} tracking`;
+  findByEnvioId(envioId: string) {
+    return this.trackingRepository.findBy({ id_envio: envioId })
   }
 }

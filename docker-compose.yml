@@ -3,7 +3,7 @@ version: '3.5'
 services: 
   envios:
     build: ./envios-micro-service
-    conainer_name: envios-micro-service
+    container_name: envios-micro-service
     networks:
       - kiki-docker-network
     expose:
@@ -12,7 +12,7 @@ services:
       - "3000:3000"
   tracking: 
     build: ./tracking-micro-service
-    conainer_name: tracking-micro-service
+    container_name: tracking-micro-service
     networks:
       - kiki-docker-network
     expose:
@@ -28,6 +28,9 @@ services:
       - 5432
     ports: 
       - "5432:5432"
+    environment: 
+      - POSTGRES_PASSWORD=postgres_password
+      
     networks:
       - kiki-docker-network
 networks:

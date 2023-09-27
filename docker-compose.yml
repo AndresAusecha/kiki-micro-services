@@ -31,5 +31,5 @@ services:
     networks:
       - kiki-docker-network
 networks:
-  mlreef-docker-network:
+  kiki-docker-network:
     name: kiki-docker-network

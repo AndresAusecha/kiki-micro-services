@@ -1,2 +1,4 @@
 envios-micro-service/node_modules
+envios-micro-service/dist
 tracking-micro-service/node_modules
+tracking-micro-service/dist

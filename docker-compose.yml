@@ -4,6 +4,24 @@ services:
   envios:
     build: ./envios-micro-service
     conainer_name: envios-micro-service
+    networks:
+      - kiki-docker-network
   tracking: 
     build: ./tracking-micro-service
     conainer_name: tracking-micro-service
+    networks:
+      - kiki-docker-network
+  kiki-db:
+    container_name: kiki-db
+    hostname: kiki-db
+    restart: always
+    image: postgres:15.4
+    expose:
+      - 5432
+    ports: 
+      - "6000:5432"
+    networks:
+      - kiki-docker-network
+networks:
+  mlreef-docker-network:
+    name: kiki-docker-network

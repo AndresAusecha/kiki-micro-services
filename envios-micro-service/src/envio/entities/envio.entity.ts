@@ -12,10 +12,10 @@ export class Envio {
   @PrimaryGeneratedColumn()
   id_envio: number;
 
-  @Column({ type: 'int4', length: 20 })
+  @Column({ type: 'int4' })
   destinatario: string
 
-  @Column({ type: 'int4', length: 20 })
+  @Column({ type: 'int4' })
   remitente: string
 
   @Column({ type: 'varchar', length: 140 })

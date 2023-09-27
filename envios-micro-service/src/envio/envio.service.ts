@@ -11,7 +11,14 @@ export class EnvioService {
   ) {}
 
   create(createEnvioDto: CreateEnvioDto) {
-    return this.envioRepository.create(createEnvioDto);
+    const envio = new Envio()
+    envio.destinatario = createEnvioDto.destinatario
+    envio.remitente  = createEnvioDto.remitente
+    envio.contenido = createEnvioDto.contenido
+    envio.estado = createEnvioDto.estado
+    envio.fecha_envio = new Date(createEnvioDto.fecha_envio)
+    
+    return this.envioRepository.save(envio);
   }
 
   findAll() {

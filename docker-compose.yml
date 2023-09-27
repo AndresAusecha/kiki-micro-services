@@ -1,0 +1,9 @@
+version: '3.5'
+
+services: 
+  envios:
+    build: ./envios-micro-service
+    conainer_name: envios-micro-service
+  tracking: 
+    build: ./tracking-micro-service
+    conainer_name: tracking-micro-service
